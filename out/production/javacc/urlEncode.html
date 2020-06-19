@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script>
+    function urlencode(hostUrl, params) {
+        var p = '?';
+        for (var key in params) {
+            p += key + '=' + params[key];
+        }
+        return hostUrl + p;
+    }
+
+    console.log(urlencode("http://www.baidu.com/", {"a": "1", "b": "2"}));
+</script>
+<body>
+
+</body>
+</html>
