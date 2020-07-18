@@ -2,6 +2,8 @@ package com.data.structure.line;
 
 /**
  * 链栈
+ * 栈空时: top == null
+ * 栈为空时: top为栈顶元素
  *
  * @param <T>
  */
