@@ -3,7 +3,7 @@ package com.data.structure.line;
 /**
  * 链栈
  * 栈空时: top == null
- * 栈为空时: top为栈顶元素
+ * 栈非空时: top为栈顶元素
  *
  * @param <T>
  */
@@ -49,18 +49,28 @@ public class LinkStack<T> {
         return this.top == null ? null : this.top.data;
     }
 
+    /**
+     * @return 空 -- true; 非空 -- false
+     */
+    public boolean isEmpty() {
+        if (this.top != null) {
+            return true;
+        }
+        return false;
+    }
+
     @Override
     public String toString() {
-        System.out.print("[");
+        StringBuilder str = new StringBuilder("[");
         StackNode<T> p = this.top;
         while (p != null) {
-            System.out.print(p.data.toString());
+            str.append(p.data.toString());
             if (p.next != null) {
-                System.out.print(",");
+                str.append(",");
             }
             p = p.next;
         }
-        System.out.println("]");
-        return super.toString();
+        str.append("]");
+        return str.toString();
     }
 }
