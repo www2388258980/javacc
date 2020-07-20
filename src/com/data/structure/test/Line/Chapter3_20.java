@@ -10,6 +10,9 @@ public class Chapter3_20 {
      * **把n与system求余得到的数压入栈s
      * **将n更新为n与system的商
      * 当栈s非空时,依次输出值
+     * <p>
+     * 时间复杂度:
+     * ** O(log2n)
      *
      * @param n      10进制n
      * @param system 代表几进制
@@ -29,5 +32,6 @@ public class Chapter3_20 {
     public static void main(String[] args) {
         conversion(100, 8);
         conversion(8, 2);
+        conversion(1345, 10);
     }
 }
