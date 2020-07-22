@@ -53,7 +53,7 @@ public class LinkStack<T> {
      * @return 空 -- true; 非空 -- false
      */
     public boolean isEmpty() {
-        if (this.top != null) {
+        if (this.top == null) {
             return true;
         }
         return false;
