@@ -131,6 +131,4 @@ public class MyLinkList2<T extends Comparable> implements Serializable {
             q.next = null;
         }
     }
-
-
 }
