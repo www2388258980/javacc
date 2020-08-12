@@ -1,8 +1,14 @@
 package com.yj.t_2020_08;
 
+import com.alibaba.excel.EasyExcel;
+import com.alibaba.excel.ExcelWriter;
+
 import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
+import java.util.Date;
 
 /**
  * 写压缩包
@@ -12,9 +18,10 @@ public class Test_08_12_01 {
         ZipOutputStream zos = null;
         FileInputStream fis = null;
         ZipEntry entry = null;
-        File file1 = new File("resources/txt/1.txt");
-        File[] files = new File[]{new File("resources/txt/1.txt"), new File("resources/txt/2.txt"),
-                new File("resources/txt/3.txt")};
+        File[] files = new File[]{new File("resources/csv/0000000558_RA_Endo_Fee.csv"),
+                new File("resources/csv/0000000558_RA_Pol_Main.csv"),
+                new File("resources/csv/0000000558_RA_Voucher_Info.csv")};
+
         try {
             zos = new ZipOutputStream(new FileOutputStream("resources/zip/123.zip"));
             byte[] buffer = new byte[1024];
@@ -29,13 +36,12 @@ public class Test_08_12_01 {
                 zos.closeEntry();
                 fis.close();
             }
+            zos.close();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
         }
-        System.out.println(file1.getAbsolutePath());
-
     }
 }
