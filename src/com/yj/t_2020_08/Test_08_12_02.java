@@ -1,5 +1,10 @@
 package com.yj.t_2020_08;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 public class Test_08_12_02 {
     public static void main(String[] args) {
         Test_08_12_02 test = new Test_08_12_02();
@@ -8,6 +13,9 @@ public class Test_08_12_02 {
         System.out.println(test.myAtoi("       1234567892123"));
         System.out.println(test.myAtoi("4193 with words"));
         System.out.println(test.myAtoi("words and 987"));
+        System.out.println(test.myAtoi2("       1234567892123"));
+        System.out.println(test.myAtoi2("4193 with words"));
+        System.out.println(test.myAtoi2("words and 987"));
     }
 
     /*
@@ -55,7 +63,7 @@ public class Test_08_12_02 {
                     if (i != 0) {
                         return sum * signBit;
                     }
-                    signBit = '+' == ch?signBit:-signBit;
+                    signBit = '+' == ch ? signBit : -signBit;
                     break;
                 case '0':
                 case '1':
@@ -90,5 +98,93 @@ public class Test_08_12_02 {
 
         }
         return sum * signBit;
+    }
+
+
+    private int getCol(char c) {
+        switch (c) {
+            case ' ':
+                return 0;
+            case '+':
+            case '-':
+                return 1;
+            case '0':
+            case '1':
+            case '2':
+            case '3':
+            case '4':
+            case '5':
+            case '6':
+            case '7':
+            case '8':
+            case '9':
+                return 2;
+        }
+        return 3;
+    }
+
+    /**
+     * <p>s
+     *
+     * @param str
+     * @return
+     * @author leetcode
+     */
+    public int myAtoi2(String str) {
+        int sign = 1;
+        int ans = 0;
+        String state = "start";
+        for (int i = 0; i < str.length(); i++) {
+            int m = str.charAt(i) - 48;
+            state = map.get(state).get(getCol(str.charAt(i)));
+            if ("in_number".equals(state)) {
+                if (sign == 1 && ans > Integer.MAX_VALUE / 10) {
+                    return Integer.MAX_VALUE;
+                } else if (sign == 1 && ans == Integer.MAX_VALUE / 10 && m > 7) {
+                    return Integer.MAX_VALUE;
+                } else if (sign == -1 && ans > Integer.MAX_VALUE / 10) {
+                    return Integer.MIN_VALUE;
+                } else if (sign == -1 && ans == Integer.MAX_VALUE / 10 && m > 8) {
+                    return Integer.MIN_VALUE;
+                }
+                ans = ans * 10 + m;
+            } else if ("signed".equals(state)) {
+                sign = str.charAt(i) == '+' ? 1 : 0;
+            }
+        }
+        return sign * ans;
+    }
+
+
+    Map<String, List<String>> map = new HashMap<>();
+
+    {
+        List<String> list1 = new ArrayList<>();
+        list1.add("start");
+        list1.add("signed");
+        list1.add("in_number");
+        list1.add("end");
+        map.put("start", list1);
+
+        List<String> list2 = new ArrayList<>();
+        list2.add("end");
+        list2.add("end");
+        list2.add("in_number");
+        list2.add("end");
+        map.put("signed", list2);
+
+        List<String> list3 = new ArrayList<>();
+        list3.add("end");
+        list3.add("end");
+        list3.add("in_number");
+        list3.add("end");
+        map.put("in_number", list3);
+
+        List<String> list4 = new ArrayList<>();
+        list4.add("end");
+        list4.add("end");
+        list4.add("end");
+        list4.add("end");
+        map.put("end", list4);
     }
 }
