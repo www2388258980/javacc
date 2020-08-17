@@ -51,15 +51,11 @@ public class Test_08_12_02 {
             char ch = str.charAt(i);
             switch (ch) {
                 case '+':
-                    if (i != 0) {
-                        return sum * signBit;
-                    }
-                    break;
                 case '-':
                     if (i != 0) {
                         return sum * signBit;
                     }
-                    signBit = -signBit;
+                    signBit = '+' == ch?signBit:-signBit;
                     break;
                 case '0':
                 case '1':
