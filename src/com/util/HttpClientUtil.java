@@ -44,10 +44,9 @@ public class HttpClientUtil {
 						 * 4. 发送请求
 						 */
 						CloseableHttpClient httpClient = HttpClients.custom().setConnectionManager(createHttpSSL(false)).build();
-
 						httpPost = new HttpPost(url);
 						httpPost.addHeader("Content-Type", "application/xml");
-						StringEntity se = new StringEntity(jsonstr);
+						StringEntity se = new StringEntity(jsonstr, charset);
 						se.setContentType("text/json");
 						se.setContentEncoding(new BasicHeader("Content-Type", "application/xml"));
 						httpPost.setEntity(se);
