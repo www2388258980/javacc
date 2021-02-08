@@ -138,5 +138,11 @@
             <artifactId>flink-connector-kafka-0.9_2.11</artifactId>
             <version>1.10.2</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.apache.zookeeper</groupId>
+            <artifactId>zookeeper</artifactId>
+            <version>3.6.2</version>
+        </dependency>
     </dependencies>
 </project>
