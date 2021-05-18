@@ -17,7 +17,7 @@
         <!-- 根据要连接的hadoop和hive，设置版本参数 -->
         <hadoop.version>2.6.0</hadoop.version>
 
-        <junit.version>4.12</junit.version>
+        <junit.version>4.13.1</junit.version>
         <slf4j.log4j12.version>1.7.5</slf4j.log4j12.version>
 
     </properties>
