@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="javacc:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>javacc</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="javacc-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="javacc:war exploded" />
+    </root>
+  </artifact>
+</component>
